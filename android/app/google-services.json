@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "62569985929",
+    "project_id": "huecamovilapp",
+    "storage_bucket": "huecamovilapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62569985929:android:5b7598b8461840e5919358",
+        "android_client_info": {
+          "package_name": "com.example.hueca_movil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBktigkI2rWMB3we8ucQy6t5b59nT9XOu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
