@@ -12,7 +12,20 @@
           "package_name": "com.example.hueca_movil"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "62569985929-5rudnvo1ibla48ufa7ur7k23aicrhehf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hueca_movil",
+            "certificate_hash": "fb6075630f888c407f433dd09d73b434cc7b2160"
+          }
+        },
+        {
+          "client_id": "62569985929-srnskalj0uftjfdc89gbtp9n8v8j7pna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBktigkI2rWMB3we8ucQy6t5b59nT9XOu4"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62569985929-srnskalj0uftjfdc89gbtp9n8v8j7pna.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "62569985929-jh36ddrq5pdksqgfb1kc714js3meme7n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.huecaMovil"
+              }
+            }
+          ]
         }
       }
     }

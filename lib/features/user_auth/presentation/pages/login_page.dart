@@ -2,6 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hueca_movil/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:hueca_movil/features/user_auth/presentation/pages/home_page.dart';
 import 'package:hueca_movil/features/user_auth/presentation/pages/sign_up_page.dart';
@@ -32,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text("Login"),
@@ -77,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                    child: _isSigning ? const CircularProgressIndicator(
-                      color: Colors.white,) : const Text(
+                    child: _isSigning ? CircularProgressIndicator(
+                      color: Colors.white,) : Text(
                       "Login",
                       style: TextStyle(
                         color: Colors.white,
@@ -88,9 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-             const  SizedBox(height: 10,),
+              SizedBox(height: 10,),
               GestureDetector(
                 onTap: () {
+                  _signInWithGoogle();
 
                 },
                 child: Container(
@@ -104,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Icon(FontAwesomeIcons.google, color: Colors.white,),
                         SizedBox(width: 5,),
                         Text(
                           "Sign in with Google",
@@ -173,8 +178,38 @@ class _LoginPageState extends State<LoginPage> {
       showToast(message: "User is successfully signed in");
       Navigator.pushNamed(context, "/home");
     } else {
-      showToast(message:"some error occured");
+      showToast(message: "some error occured");
     }
   }
+
+
+  _signInWithGoogle()async{
+
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+    try {
+
+      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+
+      if(googleSignInAccount != null ){
+        final GoogleSignInAuthentication googleSignInAuthentication = await
+        googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken,
+        );
+
+        await _firebaseAuth.signInWithCredential(credential);
+        Navigator.pushNamed(context, "/home");
+      }
+
+    }catch(e) {
+showToast(message: "some error occured $e");
+    }
+
+
+  }
+
 
 }
