@@ -1,35 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:hueca_movil/features/user_auth/presentation/pages/login_page.dart';
 
-class SplashScreen extends StatefulWidget {
-  final Widget? child;
-  const SplashScreen({super.key, this.child});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-
-@override
-  void initState() {
-    Future.delayed(const Duration(seconds: 3),
-    (){
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget.child! ), (route) => false);
-
-    });
-    super.initState();
-  }
-
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, LoginPage.routeName);
+    });
+
     return const Scaffold(
       body: Center(
-        child: Text("Welcome to flutter firebase",
-         style: TextStyle(
-          color: Colors.blue,
-          fontWeight: FontWeight.bold),
-         ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image(
+              image: AssetImage('assets/logo.png'),
+              width: 300.0,
+              height: 300.0,
+            ),
+            SizedBox(height: 30),
+            CircularProgressIndicator(
+              color: Colors.blue,
+            ), // Circular Progress Indicator
+          ],
+        ),
       ),
     );
   }
