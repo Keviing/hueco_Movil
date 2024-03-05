@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:hueca_movil/features/user_auth/presentation/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hueca_movil/global/common/toast.dart';
 import 'package:hueca_movil/src/controllers/usuario_controller.dart';
+import '../pages/acerca_app.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
@@ -94,17 +96,15 @@ class _SidebarState extends State<Sidebar> {
             title: const Text('Perfil de reseñas'),
             onTap: () {
               // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
             },
           ),
           ListTile(
             leading: const Icon(Icons.info),
             title: const Text('Acerca de la App'),
             onTap: () {
-              // Update the state of the app
-              // ...
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AboutPage()));
               // Then close the drawer
               Navigator.pop(context);
             },
